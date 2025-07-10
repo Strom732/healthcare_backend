@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome, {{ user.username }}!</p>
+<div class="mt-4">
+    <a href="/patients/" class="btn btn-info">Manage Patients</a>
+    <a href="/doctors/" class="btn btn-warning">Manage Doctors</a>
+    <a href="/mappings/" class="btn btn-secondary">Assign Doctors</a>
+</div>
+{% endblock %}

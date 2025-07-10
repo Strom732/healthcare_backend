@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ patient.name }}</h2>
+<p>Age: {{ patient.age }}</p>
+<p>Condition: {{ patient.condition }}</p>
+
+<a href="{% url 'update_patient' patient.id %}">Edit</a> |
+<a href="{% url 'delete_patient' patient.id %}">Delete</a>
+{% endblock %}

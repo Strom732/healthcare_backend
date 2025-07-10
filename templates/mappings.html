@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Assign Doctors to a Patient</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Select Patient:</label>
+        <select name="patient_id" class="form-control" required>
+            <option value="">-- Choose Patient --</option>
+            {% for patient in patients %}
+            <option value="{{ patient.id }}">{{ patient.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Select Doctor(s):</label>
+        {% for doctor in doctors %}
+        <div>
+            <input type="checkbox" name="doctor_ids" value="{{ doctor.id }}">
+            {{ doctor.name }} ({{ doctor.specialty }})
+        </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Assign</button>
+</form>
+
+<h3 class="mt-4">Assigned Mappings</h3>
+<table class="table table-bordered">
+    <thead><tr><th>Patient</th><th>Doctor</th></tr></thead>
+    <tbody>
+        {% for mapping in mappings %}
+        <tr>
+            <td>{{ mapping.patient.name }}</td>
+            <td>{{ mapping.doctor.name }}</td>
+            <td>
+                {% if mapping.patient and mapping.patient.id %}
+                    <a href="{% url 'view_patient_doctors' mapping.patient.id %}">Assigned Doctors</a> |
+                {% endif %}
+                <a href="{% url 'remove_mapping' mapping.id %}">Remove</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

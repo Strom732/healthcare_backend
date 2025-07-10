@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ doctor.name }}</h2>
+<p>Specialty: {{ doctor.specialty }}</p>
+
+<a href="{% url 'update_doctor' doctor.id %}">Edit</a> |
+<a href="{% url 'delete_doctor' doctor.id %}">Delete</a>
+{% endblock %}

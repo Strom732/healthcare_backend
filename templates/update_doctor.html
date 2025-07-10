@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Update Doctor</h2>
+<form method="post">
+  {% csrf_token %}
+  <input name="name" value="{{ doctor.name }}">
+  <input name="specialty" value="{{ doctor.specialty }}">
+  <button type="submit">Update</button>
+</form>
+{% endblock %}

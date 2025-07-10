@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Doctor</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3"><label>Name</label><input name="name" class="form-control"></div>
+    <div class="mb-3"><label>Specialty</label><input name="specialty" class="form-control"></div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}

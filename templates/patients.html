@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Patients</h2>
+<table class="table table-striped">
+    <thead><tr><th>Name</th><th>Age</th><th>Condition</th></tr></thead>
+    <tbody>
+        {% for patient in patients %}
+        
+        <tr>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.condition }}</td>
+            <td><a href="/patients/{{ patient.id }}" class="btn btn-primary">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/add_patient/" class="btn btn-primary">Add Patient</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Doctors for {{ patient.name }}</h2>
+<ul>
+  {% for mapping in mappings %}
+  <li>
+    {{ mapping.doctor.name }} - {{ mapping.doctor.specialty }}
+    <a href="{% url 'remove_mapping' mapping.id %}">Remove</a>
+  </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'manage_mappings' %}">Assign More Doctors</a>
+{% endblock %}
