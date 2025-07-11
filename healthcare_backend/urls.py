@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.core.management import call_command
+call_command("migrate")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
