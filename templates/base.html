@@ -11,15 +11,15 @@
             <a class="navbar-brand" href="/">Healthcare</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/register/"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Register</a></li>
                      {% if user.is_authenticated %}
-                        <li class="nav-item"><p>Welcome, {{ user.username }}!</p></li>
+                        <li class="nav-item"><p class="nav-link">Welcome, {{ user.username }}!</p></li>
                         <form action="{% url 'logout' %}" method="post" style="display:inline;">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link" style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
                         </form>
-                        {% else %}
-                        <li><a href="{% url 'login' %}">Login</a></li>
+                     {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/register/"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register/"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="{% url 'login' %}">Login</a></li>
                      {% endif %}
                 </ul>
             </div>
