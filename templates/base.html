@@ -19,7 +19,7 @@
                         </form>
                      {% else %}
                         <li class="nav-item"><a class="nav-link" href="/register/"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/register/"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"  style="background-color: #384B70; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Login</a></li>
                      {% endif %}
                 </ul>
             </div>
