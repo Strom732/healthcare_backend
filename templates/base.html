@@ -12,12 +12,17 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/register/">Register</a></li>
-                    {% if user.is_authenticated %}
+                    <li>
+                     {% if user.is_authenticated %}
                         <li><p>Welcome, {{ user.username }}!</p></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link">Logout</button>
+                        </form></li>
                         {% else %}
                         <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
+                     {% endif %}
+                    </li>
                 </ul>
             </div>
         </div>
