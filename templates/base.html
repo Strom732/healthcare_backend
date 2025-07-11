@@ -12,7 +12,12 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/register/">Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+                    {% if user.is_authenticated %}
+                        <li><p>Welcome, {{ user.username }}!</p></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
