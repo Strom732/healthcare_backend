@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 <h2>Assign Doctors to a Patient</h2>
 
 <form method="post">
@@ -29,7 +38,14 @@
 
 <h3 class="mt-4">Assigned Mappings</h3>
 <table class="table table-bordered">
-    <thead><tr><th>Patient</th><th>Doctor</th></tr></thead>
+    <thead>
+    <tr>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Actions</th>
+     </tr>
+    </thead>
+
     <tbody>
         {% for mapping in mappings %}
         <tr>

@@ -140,20 +140,17 @@ def delete_doctor(request, id):
 
 
 # Mappings
-from django.contrib import messages
-
 def manage_mappings(request):
     patients = Patient.objects.filter(user=request.user)
     doctors = Doctor.objects.all()
     mappings = PatientDoctorMapping.objects.filter(patient__user=request.user)
 
     if request.method == 'POST':
-        patient_id = request.POST.get('patient')
-        doctor_ids = request.POST.getlist('doctors')  # ✅ Multiple doctor IDs
+        patient_id = request.POST.get('patient_id')
+        doctor_ids = request.POST.getlist('doctor_ids')
 
         if patient_id and doctor_ids:
             for doc_id in doctor_ids:
-                # Prevent duplicate mappings
                 PatientDoctorMapping.objects.get_or_create(
                     patient_id=patient_id,
                     doctor_id=doc_id
@@ -168,6 +165,7 @@ def manage_mappings(request):
         'doctors': doctors,
         'mappings': mappings
     })
+
 
 
 def view_patient_doctors(request, patient_id):
